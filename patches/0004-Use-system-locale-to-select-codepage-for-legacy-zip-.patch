@@ -154,12 +154,12 @@ index 272e53b..8e54eea 100644
 +      char specCP[20];
 +      if (useSpecifiedCodePage) {
 +        if (codePage == 0) {
-+          strncpy(specCP, legacyCpAnsi, sizeof(legacyCpAnsi) - 1);
-+          specCP[sizeof(legacyCpAnsi) - 1] = '\0';
++          strncpy(specCP, legacyCpAnsi, sizeof(specCP) - 1);
++          specCP[sizeof(specCP) - 1] = '\0';
 +        }
 +        else if (codePage == 1) {
-+          strncpy(specCP, legacyCp, sizeof(legacyCp) - 1);
-+          specCP[sizeof(legacyCp) - 1] = '\0'; }
++          strncpy(specCP, legacyCp, sizeof(specCP) - 1);
++          specCP[sizeof(specCP) - 1] = '\0'; }
 +        else {
 +          snprintf(specCP, sizeof(specCP), "CP%d", codePage);
 +        }
