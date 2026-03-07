@@ -155,6 +155,7 @@ jobs:
           prerelease: false
           tag_name: ${{ env.VERSION }}
           name: ${{ env.VERSION }}
+          overwrite: true
           body: |
             ### 7-Zip ${{ env.VERSION }}
           files: |
