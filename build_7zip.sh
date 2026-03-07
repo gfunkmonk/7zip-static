@@ -20,4 +20,6 @@ git ls-files -z | xargs -0 unix2dos -q --allow-chown && ( QUILT_PATCHES=../patch
     CFLAGS_BASE_LIST="-c -D_7ZIP_AFFINITY_DISABLE=1 -DZ7_AFFINITY_DISABLE=1 -D_GNU_SOURCE=1" \
     CFLAGS_WARN_WALL="-Wall -Wextra" COMPL_STATIC=1 $MAKE_OPTS || exit 1 )
 
-find . -type f -name '7zzs' -exec cp -va {} 7zz \; && tar -cJvf $GITHUB_WORKSPACE/7zz-linux-$ARCH.tar.xz 7zz
+find . -type f -name '7zzs' -exec cp -va {} 7zz \;
+[ -f 7zz ] || { echo "Error: 7zzs binary not found after build" >&2; exit 1; }
+tar -cJvf "$GITHUB_WORKSPACE/7zz-linux-$ARCH.tar.xz" 7zz
