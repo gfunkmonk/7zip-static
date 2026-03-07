@@ -120,7 +120,7 @@ jobs:
         id: build
         env:
           ARCH: ${{ matrix.arch }}
-          PLATFORM: macos
+          PLATFORM: macOS
         working-directory: 7zip
         run: |
           bash ../build_7zip.sh
