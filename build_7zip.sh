@@ -1,11 +1,11 @@
 #!/bin/bash
 set -eo pipefail
 
-PLATFORM=${PLATFORM:-linux}
+PLATFORM=${PLATFORM:-Linux}
 JOBS=$(nproc 2>/dev/null || sysctl -n hw.logicalcpu 2>/dev/null || echo 2)
 
 case $PLATFORM in
-  macos)
+  macOS)
     case $ARCH in
       x86-64)
         MAKE_OPTS="-f ../../cmpl_clang_mac_x64.mak";;
