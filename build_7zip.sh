@@ -8,9 +8,9 @@ case $PLATFORM in
   macOS)
     case $ARCH in
       x86-64)
-        MAKE_OPTS="-f ../../cmpl_clang_mac_x64.mak";;
+        MAKE_OPTS="-f ../../cmpl_mac_x64.mak";;
       arm64)
-        MAKE_OPTS="-f ../../cmpl_clang_mac_arm64.mak";;
+        MAKE_OPTS="-f ../../cmpl_mac_arm64.mak";;
       *)
         echo "Unsupported macOS architecture: $ARCH" >&2; exit 1;;
     esac
