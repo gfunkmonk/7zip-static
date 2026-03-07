@@ -15,6 +15,7 @@ case $PLATFORM in
         echo "Unsupported macOS architecture: $ARCH" >&2; exit 1;;
     esac
     STATIC_OPT=""
+    EXTRA_LIBS="MY_LIBS=-liconv"
     ;;
   *)
     case $ARCH in
@@ -28,6 +29,7 @@ case $PLATFORM in
         MAKE_OPTS="-f ../../cmpl_gcc.mak";;
     esac
     STATIC_OPT="COMPL_STATIC=1"
+    EXTRA_LIBS=""
     ;;
 esac
 
@@ -37,7 +39,7 @@ git ls-files -z | xargs -0 unix2dos -q --allow-chown && ( QUILT_PATCHES=../patch
   make -j$JOBS \
     ${TOOL:+CROSS_COMPILE="${TOOL}-"} \
     CFLAGS_BASE_LIST="-c -D_7ZIP_AFFINITY_DISABLE=1 -DZ7_AFFINITY_DISABLE=1 -D_GNU_SOURCE=1" \
-    CFLAGS_WARN_WALL="-Wall -Wextra" $STATIC_OPT $MAKE_OPTS || exit 1 )
+    CFLAGS_WARN_WALL="-Wall -Wextra" $STATIC_OPT $EXTRA_LIBS $MAKE_OPTS || exit 1 )
 
 find . -type f -name '7zzs' -exec cp -va {} 7zz \;
 [ -f 7zz ] || { echo "Error: 7zzs binary not found after build" >&2; exit 1; }
