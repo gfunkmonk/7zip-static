@@ -1,4 +1,4 @@
-name: build
+name: act-build
 
 on:
   workflow_dispatch:
@@ -17,34 +17,6 @@ jobs:
             tool: arm-unknown-linux-musleabi
           - arch: armhf
             tool: arm-unknown-linux-musleabihf
-          - arch: loong64
-            tool: loongarch64-unknown-linux-musl
-          - arch: m68k
-            tool: m68k-unknown-linux-musl
-          - arch: mips64el
-            tool: mips64el-unknown-linux-musl
-          - arch: mips64
-            tool: mips64-unknown-linux-musl
-          - arch: mipsel
-            tool: mipsel-unknown-linux-musl
-          - arch: mipselsf
-            tool: mipsel-unknown-linux-muslsf
-          - arch: mips
-            tool: mips-unknown-linux-musl
-          - arch: mipssf
-            tool: mips-unknown-linux-muslsf
-          - arch: powerpc64
-            tool: powerpc64-unknown-linux-musl
-          - arch: powerpc
-            tool: powerpc-unknown-linux-musl
-          - arch: riscv
-            tool: riscv32-unknown-linux-musl
-          - arch: riscv64
-            tool: riscv64-unknown-linux-musl
-          - arch: s390x
-            tool: s390x-ibm-linux-musl
-          - arch: sh4
-            tool: sh4-multilib-linux-musl
           - arch: x86
             tool: i686-unknown-linux-musl
           - arch: x86-64
@@ -92,7 +64,7 @@ jobs:
         with:
           name: 7zz-${{ matrix.arch }}
           path: ./**/7zz-*.tar*
-
+          
   build-macos:
     name: macos-${{ matrix.arch }}
     runs-on: ${{ matrix.runner }}
